@@ -1,6 +1,3 @@
-if not game:IsLoaded() then game.Loaded:Wait() end
+local Funcs = loadstring(game:HttpGet("https://raw.githubusercontent.com/EyyAngel/RBXScripts/refs/heads/main/TDS/Funcs.lua"))()
 
-local TextServ = game:GetService("TextChatService")
-local general = TextServ:WaitForChild("TextChannels"):WaitForChild("RBXGeneral") :: TextChannel
-
-general:DisplaySystemMessage(tostring(game.PlaceId))
+Funcs.PrivateMatch()
