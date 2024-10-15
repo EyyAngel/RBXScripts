@@ -1,10 +1,6 @@
-local remote = game:GetService("ReplicatedStorage"):WaitForChild("RemoteFunction") :: RemoteFunction
+if not game:IsLoaded() then game.Loaded:Wait() end
 
-remote:InvokeServer(
-    "Multiplayer",
-    "v2:start",
-    {
-        count = 1,
-        mode = "survival"
-    }
-)
+local TextServ = game:GetService("TextChatService")
+local general = TextServ:WaitForChild("TextChannels"):WaitForChild("RBXGeneral") :: TextChannel
+
+general:DisplaySystemMessage(game.PlaceId)
