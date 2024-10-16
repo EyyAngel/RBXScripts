@@ -1,5 +1,7 @@
 local TextServ = game:GetService("TextChatService")
+local TPServ = game:GetService("TeleportService")
 
+local player = game:GetService("Players").LocalPlayer
 local generalChat = TextServ:WaitForChild("TextChannels"):WaitForChild("RBXGeneral") :: TextChannel
 local remoteFunc = game:GetService("ReplicatedStorage"):WaitForChild("RemoteFunction") :: RemoteFunction
 local remoteEvent = game:GetService("ReplicatedStorage"):WaitForChild("RemoteEvent") :: RemoteEvent
@@ -15,6 +17,10 @@ Functions.PrivateMatch = function()
         count = 1,
         mode = "survival"
     })
+end
+
+Functions.ReturnToLobby = function()
+    TPServ:Teleport(3260590327, player)
 end
 
 return Functions
