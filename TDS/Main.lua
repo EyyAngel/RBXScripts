@@ -14,12 +14,13 @@ do
 end
 
 ;(function()
-    Funcs.SendMessage("Main.lua Was Loaded...")
+    Funcs.SendMessage("Script Executed...")
+
     if game.PlaceId == Funcs.lobbyId then
         FileIO.Init()
-        Funcs.SendMessage("You are in the lobby!\nStarting private match...")
+        Funcs.SendMessage("Starting private match...")
         Funcs.PrivateMatch(FileIO.GetConfig()["difficulty"])
-    else
-        Funcs.SendMessage(string.format("PlaceId: %s", tostring(game.PlaceId)))
+    elseif game.PlaceId == Funcs.matchId then
+        Funcs.SendMessage("You are in a private match...")
     end
 end)()
