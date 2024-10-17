@@ -16,6 +16,7 @@ end
 
 
 ;(function()
+    Funcs.SendMessage("Main.lua Was Loaded...")
     if game.PlaceId == Funcs.lobbyId then
         FileIO.Init()
         Funcs.SendMessage("You are in the lobby!\nStarting private match...")
