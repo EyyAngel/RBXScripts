@@ -1,16 +1,11 @@
 local url = "https://raw.githubusercontent.com/EyyAngel/RBXScripts/refs/heads/main/TDS"
 
 do
-    Funcs = loadstring(game:HttpGet(url.."/Funcs.lua"))() :: {
-        SendMessage: (string) -> (),
-        PrivateMatch: (difficulty: string) -> (),
-        ReturnToLobby: () -> (),
-    }
+    local pass, result = pcall(function() return require('TDS/Funcs.lua') end)
+    Funcs = pass and result or loadstring(game:HttpGet(url.."/Funcs.lua"))() :: typeof(result)
 
-    FileIO = loadstring(game:HttpGet(url.."/FileIO.lua"))() :: {
-        Init: () -> (),
-        GetConfig: () -> ({difficulty: string, maps: {string}});
-    }
+    pass, result = pcall(function() return require('TDS/FileIO.lua') end)
+    FileIO = pass and result or loadstring(game:HttpGet(url.."/FileIO.lua"))() :: typeof(result)
 end
 
 ;(function()
@@ -18,7 +13,6 @@ end
 
     if game.PlaceId == Funcs.lobbyId then
         FileIO.Init()
-        Funcs.SendMessage("Starting private match...")
         Funcs.PrivateMatch(FileIO.GetConfig()["difficulty"])
     elseif game.PlaceId == Funcs.matchId then
         Funcs.SendMessage("You are in a private match...")
