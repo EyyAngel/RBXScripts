@@ -1,3 +1,9 @@
-local Funcs = loadstring(game:HttpGet("https://raw.githubusercontent.com/EyyAngel/RBXScripts/refs/heads/main/TDS/Funcs.lua"))()
+local url = "https://raw.githubusercontent.com/EyyAngel/RBXScripts/refs/heads/main/TDS/Funcs.lua"
+local Funcs = loadstring(game:HttpGet(url))()
 
-Funcs.ReturnToLobby()
+
+;(function()
+    if game.PlaceId == Funcs.lobbyId then
+        Funcs.PrivateMatch()
+    end
+end)()
