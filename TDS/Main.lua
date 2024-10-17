@@ -15,7 +15,7 @@ end
 
 ;(function()
     Funcs.SendMessage("Script Executed...")
-    Funcs.SendMessage("PlaceId: "..tostring(game.PlaceId))
+    Funcs.SendMessage(string.format("PlaceID: %s", game.PlaceId))
 
     if game.PlaceId == Funcs.lobbyId then
         FileIO.Init()
