@@ -11,12 +11,13 @@ local Functions = {
 }
 
 Functions.SendMessage = function(message)
+    message = `<font size="20" color="FF7000">{message}</font>`
     generalChat:DisplaySystemMessage(message)
 end
 
-Functions.PrivateMatch = function()
+Functions.PrivateMatch = function(difficulty)
     remoteFunc:InvokeServer("Multiplayer", "v2:start", {
-        difficulty = "Easy",
+        difficulty = difficulty,
         count = 1,
         mode = "survival"
     })
