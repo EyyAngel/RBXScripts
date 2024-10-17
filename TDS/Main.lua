@@ -15,7 +15,6 @@ end
 
 ;(function()
     Funcs.SendMessage("Script Executed...")
-    Funcs.SendMessage(string.format("Is in match: %s", tostring(game.PlaceId == Funcs.matchId)))
 
     if game.PlaceId == Funcs.lobbyId then
         FileIO.Init()
