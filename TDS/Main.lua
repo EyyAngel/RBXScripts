@@ -1,19 +1,17 @@
+local url = "https://raw.githubusercontent.com/EyyAngel/RBXScripts/refs/heads/main/TDS"
 
 do
-    local url = "https://raw.githubusercontent.com/EyyAngel/RBXScripts/refs/heads/main/TDS/Funcs.lua"
-    Funcs = loadstring(game:HttpGet(url))() :: {
+    Funcs = loadstring(game:HttpGet(url.."/Funcs.lua"))() :: {
         SendMessage: (string) -> (),
         PrivateMatch: (difficulty: string) -> (),
         ReturnToLobby: () -> (),
     }
 
-    url = "https://raw.githubusercontent.com/EyyAngel/RBXScripts/refs/heads/main/TDS/FileIO"
-    FileIO = loadstring(game:HttpGet(url))() :: {
+    FileIO = loadstring(game:HttpGet(url.."/FileIO.lua"))() :: {
         Init: () -> (),
         GetConfig: () -> ({difficulty: string, maps: {string}});
     }
 end
-
 
 ;(function()
     Funcs.SendMessage("Main.lua Was Loaded...")
