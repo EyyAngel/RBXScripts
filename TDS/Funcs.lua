@@ -10,8 +10,8 @@ local Functions = {
     lobbyId = 3260590327
 }
 
-Functions.SendMessage = function(msg)
-    local message = `<font size="16" color="#FF7000">{msg}</font>`
+Functions.SendMessage = function(message)
+    message = `<font size="20" color="#FF7000">{message}</font>`
     generalChat:DisplaySystemMessage(message)
 end
 
