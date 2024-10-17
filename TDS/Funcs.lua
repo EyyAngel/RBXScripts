@@ -7,7 +7,8 @@ local remoteFunc = game:GetService("ReplicatedStorage"):WaitForChild("RemoteFunc
 local remoteEvent = game:GetService("ReplicatedStorage"):WaitForChild("RemoteEvent") :: RemoteEvent
 
 local Functions = {
-    lobbyId = 3260590327
+    lobbyId = 3260590327,
+    matchId = 5591597781
 }
 
 Functions.SendMessage = function(message)
