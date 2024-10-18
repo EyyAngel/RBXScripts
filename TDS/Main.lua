@@ -21,6 +21,7 @@ end
 
         if not result then
             Funcs.SendMessage("Returning to lobby in 5s")
+            task.wait(5)
             Funcs.ReturnToLobby()
         else
             Funcs.SendMessage("Whitelisted Map: "..result)
