@@ -7,6 +7,19 @@ local generalChat = TextServ:WaitForChild("TextChannels"):WaitForChild("RBXGener
 local remoteFunc = game:GetService("ReplicatedStorage"):WaitForChild("RemoteFunction") :: RemoteFunction
 local remoteEvent = game:GetService("ReplicatedStorage"):WaitForChild("RemoteEvent") :: RemoteEvent
 
+--[[
+    Local Functions
+]]
+do
+    VoteForMap = function(mapName)
+        remoteEvent:FireServer("LobbyVoting", "Vote", mapName, Vector3.zero)
+        remoteEvent:FireServer("LobbyVoting", "Ready")
+    end
+end
+
+--[[
+    "Module" Functions
+]]
 local Functions = {
     lobbyId = 3260590327,
     matchId = 5591597781
@@ -35,12 +48,16 @@ Functions.AttemptPlay = function(whitelist)
         for _, board in workspace:WaitForChild("IntermissionLobby"):WaitForChild("Boards"):GetChildren() do
             local mapName = board.Hitboxes.Bottom.MapDisplay.Title.Text
             if table.find(whitelist, mapName) then
+                VoteForMap(mapName)
                 return mapName
             end
         end
 
-        Functions.SendMessage("Vetoing maps...")
-        remoteEvent:FireServer("LobbyVoting", "Veto")
+        if i < 2 then
+            Functions.SendMessage("Vetoing maps...")
+            remoteEvent:FireServer("LobbyVoting", "Veto")
+            task.wait(1)
+        end
     end
 
     return false

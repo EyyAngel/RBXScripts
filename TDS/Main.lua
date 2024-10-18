@@ -20,7 +20,7 @@ end
         local result = Funcs.AttemptPlay(config["maps"])
 
         if not result then
-            Funcs.SendMessage("No whitelisted map found")
+            Funcs.ReturnToLobby()
         end
 
         Funcs.SendMessage("Whitelisted Map: "..result)
