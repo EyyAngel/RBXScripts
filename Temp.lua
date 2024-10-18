@@ -7,7 +7,8 @@ SendMessage = function(message)
 end
 
 SendMessage("Maps:")
-for board in workspace:WaitForChild("IntermissionLobby").Boards:GetChildren() do
+for board in game.Workspace:WaitForChild("IntermissionLobby").Boards:GetChildren() do
+    SendMessage("Before")
     local mapName = board.Hitboxes.Bottom.MapDisplay.Title.Text
     SendMessage("\t"..mapName)
 end
