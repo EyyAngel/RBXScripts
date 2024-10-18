@@ -8,7 +8,7 @@ do
     FileIO = pass and result or loadstring(game:HttpGet(url.."/FileIO.lua"))() :: typeof(result)
 end
 
-;(function()
+Start = function()
     FileIO.Init()
     local config = FileIO.GetConfig()
 
@@ -18,6 +18,8 @@ end
         local mapName = Funcs.AttemptPlay(config["maps"])
 
         if not mapName then
+            Funcs.SendMessage("Returning to lobby in 5s...")
+            task.wait(5)
             Funcs.ReturnToLobby()
         end
 
@@ -26,4 +28,7 @@ end
             Funcs.SendMessage("No Replay For: "..mapName)
         end
     end
-end)()
+end
+
+local pass, msg = pcall(Start)
+if not pass then Funcs.SendMessage(msg) end

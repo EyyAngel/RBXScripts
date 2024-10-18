@@ -51,7 +51,10 @@ Functions.AttemptPlay = function(whitelist)
 
         for _, board in boards:GetChildren() do
             local mapName = board.Hitboxes.Bottom.MapDisplay.Title.Text
-            if table.find(maps, mapName) then break end
+            if table.find(maps, mapName) then
+                Functions.SendMessage("Same Map: "..mapName)
+                break
+            end
             table.insert(maps, mapName)
 
             Functions.SendMessage(mapName)
@@ -63,8 +66,9 @@ Functions.AttemptPlay = function(whitelist)
 
         if #maps >= 4 then count += 1 end
         if count < 2 then
+            Functions.SendMessage("Vetoing maps...")
             remoteEvent:FireServer("LobbyVoting", "Veto")
-            task.wait(1)
+            task.wait(3)
         end
     until count >= 2
 
