@@ -32,10 +32,15 @@ end
 Functions.AttemptPlay = function(whitelist)
     Functions.SendMessage("Checking maps...")
     for i=1, 2 do
-        for _, board in workspace:WaitForChild("IntermissionLobby").Boards:GetChildren() do
+        for _, board in workspace:WaitForChild("IntermissionLobby"):WaitForChild("Boards"):GetChildren() do
             local mapName = board.Hitboxes.Bottom.MapDisplay.Title.Text
-            Functions.SendMessage(mapName)
+            if table.find(whitelist, mapName) then
+                return mapName
+            end
         end
+
+        Functions.SendMessage("Vetoing maps...")
+        remoteEvent:FireServer("LobbyVoting", "Veto")
     end
 
     return false

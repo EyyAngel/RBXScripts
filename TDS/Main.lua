@@ -17,7 +17,6 @@ end
         Funcs.PrivateMatch(config["difficulty"])
     elseif game.PlaceId == Funcs.matchId then
         Funcs.SendMessage("You are in a private match")
-        -- Check for whitelisted maps
         local result = Funcs.AttemptPlay(config["maps"])
         Funcs.SendMessage("Whitelisted Map?:"..result)
         -- If no whitelisted map, return to lobby
