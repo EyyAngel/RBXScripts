@@ -36,10 +36,6 @@ Functions.AttemptPlay = function(whitelist)
             local mapName = board.Hitboxes.Bottom.MapDisplay.Title.Text
             Functions.SendMessage(mapName)
         end
-
-        Functions.SendMessage("Vetoing maps...")
-        remoteEvent:FireServer("LobbyVoting", "Veto")
-        task.wait(1)
     end
 
     return false
