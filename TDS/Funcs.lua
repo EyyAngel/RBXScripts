@@ -46,7 +46,7 @@ Functions.AttemptPlay = function(whitelist)
     local boards = workspace:WaitForChild("IntermissionLobby"):WaitForChild("Boards") :: Folder
     local count = 0
 
-    repeat
+    repeat task.wait()
         local maps = {}
 
         for _, board in boards:GetChildren() do
