@@ -9,15 +9,14 @@ do
 end
 
 ;(function()
-    Funcs.SendMessage("Script Executed...")
+    Funcs.SendMessage("Script Executed!")
 
     if game.PlaceId == Funcs.lobbyId then
         FileIO.Init()
         Funcs.PrivateMatch(FileIO.GetConfig()["difficulty"])
     elseif game.PlaceId == Funcs.matchId then
-        Funcs.SendMessage("You are in a private match...")
+        Funcs.SendMessage("You are in a private match")
         -- Check for whitelisted maps
-        Funcs.SendMessage("Checking maps...")
         local result = Funcs.AttemptPlay(FileIO.GetConfig()["maps"])
         Funcs.SendMessage("Whitelisted Map?:"..result)
         -- If no whitelisted map, return to lobby
