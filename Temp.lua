@@ -6,9 +6,4 @@ SendMessage = function(message)
     generalChat:DisplaySystemMessage(message)
 end
 
-SendMessage("Maps:")
-for board in game.Workspace:WaitForChild("IntermissionLobby").Boards:GetChildren() do
-    SendMessage("Before")
-    local mapName = board.Hitboxes.Bottom.MapDisplay.Title.Text
-    SendMessage("\t"..mapName)
-end
+SendMessage(tostring( workspace.IntermissionLobby ))
