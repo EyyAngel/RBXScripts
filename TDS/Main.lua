@@ -4,7 +4,7 @@ do
     local pass, result = pcall(function() return require('TDS/Funcs.lua') end)
     Funcs = pass and result or loadstring(game:HttpGet(url.."/Funcs.lua"))() :: typeof(result)
 
-    pass, result = pcall(function() return require('TDS/FileIO.lua') end)
+    local pass, result = pcall(function() return require('TDS/FileIO.lua') end)
     FileIO = pass and result or loadstring(game:HttpGet(url.."/FileIO.lua"))() :: typeof(result)
 end
 
@@ -16,5 +16,9 @@ end
         Funcs.PrivateMatch(FileIO.GetConfig()["difficulty"])
     elseif game.PlaceId == Funcs.matchId then
         Funcs.SendMessage("You are in a private match...")
+        -- Check for whitelisted maps
+        Funcs.SendMessage("Whitelisted Map?: "..Funcs.AttemptPlay(FileIO.GetConfig()["maps"]))
+        -- If no whitelisted map, return to lobby
+        -- Else record or replay
     end
 end)()
