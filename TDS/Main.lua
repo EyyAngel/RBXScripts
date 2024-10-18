@@ -9,6 +9,7 @@ do
 end
 
 ;(function()
+    FileIO.Init()
     local config = FileIO.GetConfig()
 
     if game.PlaceId == Funcs.lobbyId then

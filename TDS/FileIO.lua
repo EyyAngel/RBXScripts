@@ -16,7 +16,6 @@ FileIO.Init = function()
 end
 
 FileIO.GetConfig = function(): config
-    FileIO.Init()
     return HttpServ:JSONDecode(readfile("TDS/config.json"))
 end
 
