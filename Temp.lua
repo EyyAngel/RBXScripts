@@ -6,5 +6,4 @@ SendMessage = function(message)
     generalChat:DisplaySystemMessage(message)
 end
 
-SendMessage(tostring( workspace.IntermissionLobby.Boards ))
-SendMessage(tostring( workspace.IntermissionLobby.Boards:GetChildren() ))
+SendMessage(tostring( #workspace.IntermissionLobby.Boards:GetChildren() ))
