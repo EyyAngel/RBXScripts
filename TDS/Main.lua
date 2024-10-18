@@ -19,10 +19,8 @@ end
         Funcs.SendMessage("You are in a private match")
         local result = Funcs.AttemptPlay(config["maps"])
 
-        if not result then
-            Funcs.ReturnToLobby()
+        if result then
+            Funcs.SendMessage("Whitelisted Map: "..result)
         end
-
-        Funcs.SendMessage("Whitelisted Map: "..result)
     end
 end)()

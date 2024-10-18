@@ -47,7 +47,11 @@ Functions.AttemptPlay = function(whitelist)
     for i=1, 2 do
         for _, board in workspace:WaitForChild("IntermissionLobby"):WaitForChild("Boards"):GetChildren() do
             local mapName = board.Hitboxes.Bottom.MapDisplay.Title.Text
+
+            Functions.SendMessage(mapName)
+
             if table.find(whitelist, mapName) then
+                Functions.SendMessage("Voting for: "..mapName)
                 VoteForMap(mapName)
                 return mapName
             end
