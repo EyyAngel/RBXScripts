@@ -31,13 +31,14 @@ end
 
 Functions.AttemptPlay = function(whitelist)
     for i=1, 2 do
-        for board in workspace.IntermissionLobby.Boards:GetChildren() do
+        for board in workspace:WaitForChild("IntermissionLobby").Boards:GetChildren() do
             local mapName = board.Hitboxes.Bottom.MapDisplay.Title.Text
             if table.find(whitelist, mapName) then
                 return mapName
             end
         end
 
+        Functions.SendMessage("Vetoing maps...")
         remoteEvent:FireServer("LobbyVoting", "Veto")
         task.wait(1)
     end
