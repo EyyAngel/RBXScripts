@@ -53,8 +53,9 @@ Functions.AttemptPlay = function(whitelist)
             local mapName = board.Hitboxes.Bottom.MapDisplay.Title.Text
             if table.find(maps, mapName) then break end
             table.insert(maps, mapName)
+            count += 1
+            
             Functions.SendMessage(mapName)
-
             if table.find(whitelist, mapName) then
                 VoteForMap(mapName)
                 return mapName

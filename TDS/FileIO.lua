@@ -19,4 +19,13 @@ FileIO.GetConfig = function(): config
     return HttpServ:JSONDecode(readfile("TDS/config.json"))
 end
 
+FileIO.GetMapReplay = function(mapName)
+    local filePath = "TDS/replays/"..mapName..".json"
+    if not isfile(filePath) then
+        return false
+    end
+
+    return HttpServ:JSONDecode(readfile(filePath))
+end
+
 return FileIO

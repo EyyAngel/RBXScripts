@@ -15,12 +15,15 @@ end
         FileIO.Init()
         Funcs.PrivateMatch(config["difficulty"])
     elseif game.PlaceId == Funcs.matchId then
-        local result = Funcs.AttemptPlay(config["maps"])
+        local mapName = Funcs.AttemptPlay(config["maps"])
 
-        if not result then
+        if not mapName then
             Funcs.ReturnToLobby()
-        else
-            -- Record or replay
+        end
+
+        local mapReplay = FileIO.GetMapReplay(mapName)
+        if not mapReplay then
+            Funcs.SendMessage("No Replay For: "..mapName)
         end
     end
 end)()
