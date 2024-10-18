@@ -65,7 +65,7 @@ Functions.AttemptPlay = function(whitelist)
         end
 
         if #maps >= 4 then count += 1 end
-        if count < 2 then
+        if count == 1 then
             Functions.SendMessage("Vetoing maps...")
             remoteEvent:FireServer("LobbyVoting", "Veto")
             task.wait(3)
