@@ -12,7 +12,6 @@ end
     local config = FileIO.GetConfig()
 
     if game.PlaceId == Funcs.lobbyId then
-        FileIO.Init()
         Funcs.PrivateMatch(config["difficulty"])
     elseif game.PlaceId == Funcs.matchId then
         local mapName = Funcs.AttemptPlay(config["maps"])
