@@ -32,7 +32,7 @@ end
 Functions.AttemptPlay = function(whitelist)
     Functions.SendMessage("Checking maps...")
     for i=1, 2 do
-        for board in workspace:WaitForChild("IntermissionLobby").Boards:GetChildren() do
+        for _, board in workspace:WaitForChild("IntermissionLobby").Boards:GetChildren() do
             local mapName = board.Hitboxes.Bottom.MapDisplay.Title.Text
             Functions.SendMessage(mapName)
         end
