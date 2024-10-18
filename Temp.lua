@@ -6,4 +6,9 @@ SendMessage = function(message)
     generalChat:DisplaySystemMessage(message)
 end
 
-SendMessage(tostring( #workspace.IntermissionLobby.Boards:GetChildren() ))
+local maps = workspace.IntermissionLobby.Boards:GetChildren()
+
+for map in maps do
+    local mapName = map.Hitboxes.Bottom.MapDisplay.Title.Text
+    SendMessage(mapName)
+end
