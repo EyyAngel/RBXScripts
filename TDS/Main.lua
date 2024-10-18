@@ -9,22 +9,18 @@ do
 end
 
 ;(function()
-    Funcs.SendMessage("Script Executed!")
     local config = FileIO.GetConfig()
 
     if game.PlaceId == Funcs.lobbyId then
         FileIO.Init()
         Funcs.PrivateMatch(config["difficulty"])
     elseif game.PlaceId == Funcs.matchId then
-        Funcs.SendMessage("You are in a private match")
         local result = Funcs.AttemptPlay(config["maps"])
 
         if not result then
-            Funcs.SendMessage("Returning to lobby in 5s")
-            task.wait(5)
             Funcs.ReturnToLobby()
         else
-            Funcs.SendMessage("Whitelisted Map: "..result)
+            -- Record or replay
         end
     end
 end)()

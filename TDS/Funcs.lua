@@ -43,27 +43,29 @@ Functions.ReturnToLobby = function()
 end
 
 Functions.AttemptPlay = function(whitelist)
-    Functions.SendMessage("Checking maps...")
-    task.wait(5)
-    for i=1, 2 do
-        for _, board in workspace:WaitForChild("IntermissionLobby"):WaitForChild("Boards"):GetChildren() do
-            local mapName = board.Hitboxes.Bottom.MapDisplay.Title.Text
+    local boards = workspace:WaitForChild("IntermissionLobby"):WaitForChild("Boards") :: Folder
+    local count = 0
 
+    repeat
+        local maps = {}
+
+        for _, board in boards:GetChildren() do
+            local mapName = board.Hitboxes.Bottom.MapDisplay.Title.Text
+            if table.find(maps, mapName) then break end
+            table.insert(maps, mapName)
             Functions.SendMessage(mapName)
 
             if table.find(whitelist, mapName) then
-                Functions.SendMessage("Voting for: "..mapName)
                 VoteForMap(mapName)
                 return mapName
             end
         end
 
-        if i < 2 then
-            Functions.SendMessage("Vetoing maps...")
+        if count < 2 then
             remoteEvent:FireServer("LobbyVoting", "Veto")
             task.wait(1)
         end
-    end
+    until count >= 2
 
     return false
 end
