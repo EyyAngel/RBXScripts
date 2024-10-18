@@ -44,7 +44,7 @@ end
 
 Functions.AttemptPlay = function(whitelist)
     Functions.SendMessage("Checking maps...")
-    task.wait(3)
+    task.wait(5)
     for i=1, 2 do
         for _, board in workspace:WaitForChild("IntermissionLobby"):WaitForChild("Boards"):GetChildren() do
             local mapName = board.Hitboxes.Bottom.MapDisplay.Title.Text
