@@ -11,7 +11,7 @@ FileIO.Init = function()
     if not isfolder("TDS") then
         makefolder("TDS")
         makefolder("TDS/replays")
-        writefile("TDS/config.json", '{"difficulty": "Easy", "maps": ["Grass Isle", "Toy Board"]}')
+        writefile("TDS/config.json", '{"difficulty": "Easy", "maps": ["Grass Isle", "Toyboard"]}')
     end
 end
 
