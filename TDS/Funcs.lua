@@ -34,9 +34,7 @@ Functions.AttemptPlay = function(whitelist)
     for i=1, 2 do
         for board in workspace:WaitForChild("IntermissionLobby").Boards:GetChildren() do
             local mapName = board.Hitboxes.Bottom.MapDisplay.Title.Text
-            if table.find(whitelist, mapName) then
-                return mapName
-            end
+            Functions.SendMessage(mapName)
         end
 
         Functions.SendMessage("Vetoing maps...")
