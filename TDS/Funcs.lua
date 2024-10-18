@@ -53,8 +53,7 @@ Functions.AttemptPlay = function(whitelist)
             local mapName = board.Hitboxes.Bottom.MapDisplay.Title.Text
             if table.find(maps, mapName) then break end
             table.insert(maps, mapName)
-            count += 1
-            
+
             Functions.SendMessage(mapName)
             if table.find(whitelist, mapName) then
                 VoteForMap(mapName)
@@ -62,6 +61,7 @@ Functions.AttemptPlay = function(whitelist)
             end
         end
 
+        if #maps >= 4 then count += 1 end
         if count < 2 then
             remoteEvent:FireServer("LobbyVoting", "Veto")
             task.wait(1)
