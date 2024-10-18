@@ -2,6 +2,7 @@ local TextServ = game:GetService("TextChatService")
 local TPServ = game:GetService("TeleportService")
 
 local player = game:GetService("Players").LocalPlayer
+local _char = player.Changed or player.CharacterAdded:Wait()
 local generalChat = TextServ:WaitForChild("TextChannels"):WaitForChild("RBXGeneral") :: TextChannel
 local remoteFunc = game:GetService("ReplicatedStorage"):WaitForChild("RemoteFunction") :: RemoteFunction
 local remoteEvent = game:GetService("ReplicatedStorage"):WaitForChild("RemoteEvent") :: RemoteEvent
