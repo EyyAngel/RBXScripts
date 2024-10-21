@@ -51,13 +51,8 @@ Functions.AttemptPlay = function(whitelist)
 
         for _, board in boards:GetChildren() do
             local mapName = board.Hitboxes.Bottom.MapDisplay.Title.Text
-            if table.find(maps, mapName) then
-                Functions.SendMessage("Same Map: "..mapName)
-                break
-            end
+            if table.find(maps, mapName) then break end
             table.insert(maps, mapName)
-
-            Functions.SendMessage(mapName)
             if table.find(whitelist, mapName) then
                 VoteForMap(mapName)
                 return mapName
