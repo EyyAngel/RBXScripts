@@ -32,3 +32,5 @@ end
 
 local pass, msg = pcall(Start)
 if not pass then Funcs.SendMessage(msg) end
+
+-- game:GetService("Players").LocalPlayer.PlayerGui.ReactGame.Rewards.content.gameOver
