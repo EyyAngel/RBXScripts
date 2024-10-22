@@ -74,7 +74,7 @@ Functions.AttemptPlay = function(whitelist)
 end
 
 Functions.ListenForEnd = function()
-    local gameOverFrame = playerGUI.ReactGame.Rewards.content.gameOver :: Frame
+    local gameOverFrame = playerGUI.ReactGame.Rewards.content.gameOver
     gameOverFrame:GetPropertyChangedSignal("Visible"):Once(function()
         Functions.matchEnded:Fire()
     end)
