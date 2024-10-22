@@ -32,8 +32,22 @@ Start = function()
             Funcs.SendMessage("No replay found, begin recording...")
             Recorder.recording = true
         else
-            
+            -- Replay map recording
+            Funcs.SendMessage("Replay found, waiting for match...")
+            Recorder.matchStart.Event:Wait()
         end
+
+        Funcs.ListenForEnd()
+        Funcs.matchEnded.Event:Connect(function()
+            Funcs.SendMessage("Match ended...")
+            if Recorder.recording then
+                Recorder.SaveRecording(mapName)
+                Funcs.SendMessage("Recording saved...")
+            end
+
+            task.wait(3)
+            Funcs.ReturnToLobby()
+        end)
     end
 end
 

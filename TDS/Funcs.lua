@@ -2,7 +2,10 @@ local TextServ = game:GetService("TextChatService")
 local TPServ = game:GetService("TeleportService")
 
 local player = game:GetService("Players").LocalPlayer
+local playerGUI = player:WaitForChild("PlayerGui")
 local _char = player.Changed or player.CharacterAdded:Wait()
+local gameOverFrame = playerGUI.ReactGame.Rewards.content.gameOver :: Frame
+
 local generalChat = TextServ:WaitForChild("TextChannels"):WaitForChild("RBXGeneral") :: TextChannel
 local remoteFunc = game:GetService("ReplicatedStorage"):WaitForChild("RemoteFunction") :: RemoteFunction
 local remoteEvent = game:GetService("ReplicatedStorage"):WaitForChild("RemoteEvent") :: RemoteEvent
@@ -22,7 +25,8 @@ end
 ]]
 local Functions = {
     lobbyId = 3260590327,
-    matchId = 5591597781
+    matchId = 5591597781,
+    matchEnded = Instance.new("BindableEvent")
 }
 
 Functions.SendMessage = function(message)
@@ -68,6 +72,12 @@ Functions.AttemptPlay = function(whitelist)
     until count >= 2
 
     return false
+end
+
+Functions.ListenForEnd = function()
+    gameOverFrame:GetPropertyChangedSignal("Visible"):Once(function()
+        Functions.matchEnded:Fire()
+    end)
 end
 
 return Functions
