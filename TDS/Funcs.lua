@@ -4,7 +4,6 @@ local TPServ = game:GetService("TeleportService")
 local player = game:GetService("Players").LocalPlayer
 local playerGUI = player:WaitForChild("PlayerGui")
 local _char = player.Changed or player.CharacterAdded:Wait()
-local gameOverFrame = playerGUI.ReactGame.Rewards.content.gameOver :: Frame
 
 local generalChat = TextServ:WaitForChild("TextChannels"):WaitForChild("RBXGeneral") :: TextChannel
 local remoteFunc = game:GetService("ReplicatedStorage"):WaitForChild("RemoteFunction") :: RemoteFunction
@@ -75,6 +74,7 @@ Functions.AttemptPlay = function(whitelist)
 end
 
 Functions.ListenForEnd = function()
+    local gameOverFrame = playerGUI.ReactGame.Rewards.content.gameOver :: Frame
     gameOverFrame:GetPropertyChangedSignal("Visible"):Once(function()
         Functions.matchEnded:Fire()
     end)
