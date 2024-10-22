@@ -8,7 +8,7 @@ do
     FileIO = pass and result or loadstring(game:HttpGet(url.."/FileIO.lua"))() :: typeof(result)
 
     local pass, result = pcall(function() return require('TDS/Recorder.lua') end)
-    Recorder = pass and result or loadstring(game:HttpGet(url.."/Recorder.lua")) :: typeof(result)
+    Recorder = pass and result or loadstring(game:HttpGet(url.."/Recorder.lua"))() :: typeof(result)
 end
 
 Start = function()
