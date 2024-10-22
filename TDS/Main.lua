@@ -6,6 +6,9 @@ do
 
     local pass, result = pcall(function() return require('TDS/FileIO.lua') end)
     FileIO = pass and result or loadstring(game:HttpGet(url.."/FileIO.lua"))() :: typeof(result)
+
+    local pass, result = pcall(function() return require('TDS/Recorder.lua') end)
+    Recorder = pass and result or loadstring(url.."/Recorder.lua") :: typeof(result)
 end
 
 Start = function()
@@ -23,9 +26,13 @@ Start = function()
             Funcs.ReturnToLobby()
         end
 
+        Recorder.Hook()
         local mapReplay = FileIO.GetMapReplay(mapName)
         if not mapReplay then
-            Funcs.SendMessage("No Replay For: "..mapName)
+            Funcs.SendMessage("No replay found, begin recording...")
+            Recorder.recording = true
+        else
+            
         end
     end
 end
